@@ -1,97 +1,199 @@
-# CNN Flower Image Classification
+# CNN Flower Classification 🌸
 
 ## Project Overview
-This project uses a Convolutional Neural Network (CNN) to classify flower images into five categories using TensorFlow and Keras.
+
+This project uses a Convolutional Neural Network (CNN) to classify flower images into five categories: Daisy, Dandelion, Roses, Sunflowers, and Tulips.
+
+The model is built using TensorFlow and Keras. It learns visual features from flower images and predicts the flower category for a given input image.
 
 ## Objectives
-- Build and train a CNN model for image classification.
-- Classify images into five flower categories.
-- Evaluate the model using accuracy, loss, and classification metrics.
-- Visualize training performance and sample predictions.
+
+- Build a CNN model for image classification.
+- Preprocess and load flower images for training.
+- Train and evaluate the model using training and validation datasets.
+- Visualize model accuracy and loss.
+- Predict the category of a sample flower image.
+- Save the trained model for future use.
 
 ## Dataset
-The dataset contains 3,670 flower images across five categories:
-- Daisy
-- Dandelion
-- Roses
-- Sunflowers
-- Tulips
 
-Dataset source:
-https://storage.googleapis.com/download.tensorflow.org/example_images/flower_photos.tgz
+The project uses the **Flower Photos dataset**, containing five flower categories.
 
-The dataset was divided into:
+| Flower Category | Description |
+|---|---|
+| Daisy | Daisy flower images |
+| Dandelion | Dandelion flower images |
+| Roses | Rose flower images |
+| Sunflowers | Sunflower images |
+| Tulips | Tulip flower images |
+
+**Dataset statistics:**
+
+- Total images: 3,670
 - Training images: 2,936
 - Validation images: 734
+- Image size: 180 × 180 pixels
+- Batch size: 32
+- Number of classes: 5
+
+The dataset is organized into folders according to flower category.
 
 ## Technologies Used
+
 - Python
-- TensorFlow and Keras
+- TensorFlow
+- Keras
 - NumPy
 - Matplotlib
-- Scikit-learn
-- Pillow
+- scikit-learn
 - Jupyter Notebook
 
 ## Model Architecture
-The CNN model includes:
-1. Three convolutional layers with ReLU activation.
-2. Max-pooling layers.
-3. A flatten layer.
-4. A dense layer with 128 neurons.
-5. A dropout layer to help reduce overfitting.
-6. An output layer with five neurons and softmax activation.
 
-Image size: 180 x 180 pixels  
-Batch size: 32  
-Epochs: 10  
-Optimizer: Adam  
-Loss function: Sparse categorical cross-entropy
+The CNN model consists of the following layers:
 
-## Model Performance
-- Final training accuracy: approximately 92.03%
-- Final validation accuracy: approximately 69.21%
-- Best validation accuracy: approximately 70.16%
+1. **Convolutional Layer:** Extracts visual features from flower images.
+2. **Max Pooling Layer:** Reduces the spatial dimensions of feature maps.
+3. **Convolutional and Max Pooling Layers:** Learn increasingly complex image features.
+4. **Flatten Layer:** Converts feature maps into a one-dimensional vector.
+5. **Dense Layer:** Learns patterns useful for classification.
+6. **Dropout Layer:** Helps reduce overfitting during training.
+7. **Output Layer:** Uses Softmax activation to predict probabilities for the five flower categories.
 
-The difference between training and validation accuracy suggests overfitting. Further improvements could include data augmentation, transfer learning, and additional tuning.
+### Model Configuration
 
-## Evaluation
-The model was evaluated using a classification report with precision, recall, and F1-score for each flower category.
+- Optimizer: Adam
+- Loss function: Sparse Categorical Crossentropy
+- Evaluation metric: Accuracy
+- Epochs: 10
+- Input image size: 180 × 180 pixels
+- Output classes: 5
 
-## Output Images
-The `output_images` folder contains:
-- `accuracy_plot.png` — training and validation accuracy.
-- `loss_plot.png` — training and validation loss.
-- `sample_prediction.png` — example flower prediction.
+## Model Training and Evaluation
 
-A sample image was correctly predicted as Daisy with approximately 84.31% confidence.
+The model was trained using the training dataset and evaluated on the validation dataset.
 
-## How to Run
-1. Install Python and Jupyter Notebook.
-2. Install the required libraries:
+### Results
 
-   ```bash
-   pip install -r requirements.txt
-   ```
+| Metric | Result |
+|---|---:|
+| Training Accuracy | Approximately 92.03% |
+| Validation Accuracy | Approximately 69.21% |
+| Validation Loss | Approximately 1.2601 |
+| Best Validation Accuracy | Approximately 70.16% |
 
-3. Open `cnn_model.ipynb` in Jupyter Notebook.
-4. Run the notebook cells in order to prepare the dataset, train the model, and evaluate predictions.
+The model achieved good accuracy on the training data. However, the difference between training and validation accuracy suggests overfitting. Further improvements could include data augmentation, additional regularization, and hyperparameter tuning.
 
-Ensure the dataset path in the notebook points to the dataset folder included with this project, or update it to the downloaded dataset location.
+## Output Visualizations
+
+The project includes visualizations generated during model training and evaluation.
+
+- `output_images/accuracy_plot.png` — Training and validation accuracy.
+- `output_images/loss_plot.png` — Training and validation loss.
+- `output_images/sample_prediction.png` — Example flower prediction.
+
+## Sample Prediction
+
+The trained model was tested using a sample flower image.
+
+**Example result:**
+- Predicted class: Daisy
+- Prediction confidence: Approximately 84.31%
+
+The prediction demonstrates how the trained CNN model classifies an input flower image.
 
 ## Project Structure
+
 ```text
 CNN_Flower_Classification/
-├── dataset/
+│
 ├── cnn_model.ipynb
-├── trained_model.h5
-├── requirements.txt
 ├── README.md
+├── requirements.txt
+├── trained_model.h5
+│
+├── dataset/
+│   └── flower_photos/
+│       ├── daisy/
+│       ├── dandelion/
+│       ├── roses/
+│       ├── sunflowers/
+│       ├── tulips/
+│       └── LICENSE.txt
+│
 └── output_images/
     ├── accuracy_plot.png
     ├── loss_plot.png
     └── sample_prediction.png
 ```
 
+## Installation and Setup
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/angelinvinnarasi-rgb/CNN_Flower_Classification.git
+```
+
+### 2. Navigate to the Project Folder
+
+```bash
+cd CNN_Flower_Classification
+```
+
+### 3. Create a Virtual Environment (Optional)
+
+```bash
+python -m venv venv
+```
+
+Activate it on Windows:
+
+```bash
+venv\Scripts\activate
+```
+
+### 4. Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 5. Run the Notebook
+
+Start Jupyter Notebook:
+
+```bash
+jupyter notebook
+```
+
+Open `cnn_model.ipynb` and run the cells in order.
+
+**Note:** If the dataset is not available locally, follow the dataset-loading code in the notebook to download or locate it before training.
+
+## Saved Model
+
+The trained model is saved as:
+
+`trained_model.h5`
+
+It can be loaded using TensorFlow/Keras for further evaluation or prediction. Ensure that a compatible TensorFlow/Keras environment is installed.
+
+## Future Improvements
+
+- Apply data augmentation to improve generalization.
+- Tune hyperparameters to improve validation accuracy.
+- Experiment with deeper CNN architectures.
+- Use transfer learning with pretrained models such as MobileNetV2.
+- Test the model on additional flower images.
+- Develop a simple web application for flower classification.
+
 ## Conclusion
-This project demonstrates how a CNN can classify flower images into five categories. The model learned useful image features, but the validation results indicate that further improvements are possible.
+
+This project demonstrates the application of Convolutional Neural Networks to image classification. The model successfully learns to classify flower images into five categories. The evaluation results also highlight the importance of reducing overfitting and improving generalization on unseen data.
+
+## Author
+
+**Elaiyarasi**
+
+GitHub Repository: [CNN Flower Classification](https://github.com/angelinvinnarasi-rgb/CNN_Flower_Classification)
